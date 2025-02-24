@@ -12,17 +12,22 @@ pipeline {
                 git branch: 'sak', url: 'https://github.com/sakshi-kp/testing-repo.git'
             }
         }
-        
+
         stage('compile') {
             steps {
-                sh "mvn compile"
+                script {
+                    sh "mvn compile"
+                }
             }
         }
-        
+
         stage('Build') {
             steps {
-                sh "mvn clean install"
+                script {
+                    sh "mvn clean install"
+                }
             }
         }
     }
 }
+
