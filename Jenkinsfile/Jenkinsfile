@@ -7,15 +7,21 @@ pipeline {
     }
 
     stages {
-        stage('Clone Repository') {
+        stage('git-checkout') {
             steps {
-                git url: 'https://github.com/sakshi-kp/testing-repo.git', branch: 'sak'
+                git branch: 'sak', url: 'https://github.com/sakshi-kp/testing-repo.git'
             }
         }
-
-        stage('Build Project') {
+        
+        stage('compile') {
             steps {
-                sh 'mvn clean install'
+                sh "mvn compile"
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                sh "mvn clean install"
             }
         }
     }
