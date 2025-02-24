@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git url: 'https://github.com/sakshi-kp/testing-repo.git', branch: 'main'
+                git url: 'https://github.com/sakshi-kp/testing-repo.git', branch: 'sak'
             }
         }
 
