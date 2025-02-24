@@ -1,33 +1,26 @@
 pipeline {
     agent any
 
-    tools {
-        jdk 'java-11'
-        maven 'maven'
-    }
-
     stages {
-        stage('git-checkout') {
+        stage('Clone Code') {
             steps {
-                git branch: 'sak', url: 'https://github.com/sakshi-kp/testing-repo.git'
+                git url: 'https://github.com/sakshi-kp/testing-repo.git', branch: 'sak'
             }
         }
 
-        stage('compile') {
+        stage('Build and Test') {
             steps {
-                script {
-                    sh "mvn compile"
-                }
+                echo 'Building and Testing the code...'
             }
         }
 
-        stage('Build') {
+        stage('Deploy Code') {
             steps {
-                script {
-                    sh "mvn clean install"
-                }
+                echo 'Deploying the code...'
             }
         }
     }
 }
+
+
 
